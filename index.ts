@@ -66,7 +66,7 @@ function fit(x: Tensor, y: Tensor):number {
         if (!(trainAcc in storeBestNumNeighbor)) storeBestNumNeighbor[trainAcc] = neighbors
         neighbors++
         if (!(i % 1)) {
-            console.log(`=== Iteration ${red((i+'').padEnd(3))}:  | Train Accuracy: ${gr(trainAcc + '%').underline}`)
+            console.log(`=== Training Iteration ${red((i+'').padEnd(3))}:  | Train Accuracy: ${gr(trainAcc + '%').underline}`)
             console.log('  Labels Expected:', Array.from(y.dataSync()).join(', ').yellow)
             console.log('  Labels Guessed :', Array.from(tf.round(predictedVals).dataSync()).join(', ').yellow)
             tf.metrics.binaryAccuracy(predictedVals, y).dataSync()[0] * 100
