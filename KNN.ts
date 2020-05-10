@@ -1,15 +1,15 @@
 import * as tf from '@tensorflow/tfjs'
-import {Tensor, Rank} from '@tensorflow/tfjs'
+import {Tensor} from '@tensorflow/tfjs'
 
-const {mul, add, sum, div, sub, matMul, log, neg} = tf;
+const {sub, neg} = tf;
 
 /**
- * From-scratch implementation of the Logistic Regression
+ * A simple implementation of KNN which will 
+ * find the best neighbor combination required to yield the highest results
+ * @constructor Instantiates a KNN Model
+ * @returns An object instance of the model
  */
 export class KNearestNeighbors {
-    // w: tf.Scalar
-    // b: tf.Scalar
-    // gradients: {dw: Tensor<tf.Rank>; db: tf.Scalar}
 
     constructor(
         private numNeighbor: number,
@@ -22,19 +22,10 @@ export class KNearestNeighbors {
     }
 
     /**
-     * Back propogate the updates
+     * Using Euclidean distances, it finds for every sample in x where it should belong
+     * based on the training data
      * @param x - The input dataset
-     * @param y - Actual labels
-     */
-    fit(x: Tensor, y: Tensor):void {
-        this.selfFitX = x
-        this.selfFitY = y
-    }
-
-    /**
-     * Back propogate the updates
-     * @param x - The input dataset
-     * @returns The best match
+     * @returns The predictions for where every sample from X belongs
      */
     predict(x: Tensor) {
         const distance = euclideanDistance(this.selfFitX,x)
@@ -46,12 +37,7 @@ export class KNearestNeighbors {
         // return tf.argMax(predCount, 1)
         return predictions
     }
-    
-
-   
-    
 }
-
 
 /**
  * Calculate the Euclidean Distance between two Tensors
