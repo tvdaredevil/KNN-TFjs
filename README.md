@@ -1,5 +1,5 @@
 # KNN-TFjs
-This is a from scratch implementation of the K-nearest neighbors model in TensorFlowJs
+This is a from scratch implementation of the K-nearest neighbors model in TensorFlowJs. In this example, we have a training set of letters that belong to one class or another. After training on those images, we then classify letters as seen in the example below
 
 # To Run
 - Download this code to a folder
